@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Workshop Admin</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= favicon_link_tag asset_path('tool.png') %>
+</head>
+
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="barra-lateral col-12 col-sm-auto">
+      <div class="logo">
+
+        <h2><i class="fas fa-shopping-cart fa-2x" aria-hidden="true"></i></h2>
+
+      </div>
+      <nav class="menu d-flex d-sm-block justify-content-center flex-wrap">
+
+        <i class="fas fa-shopping-basket fa-2x" aria-hidden="true"></i>
+        <a href="<%= officials_path %>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          Productos</a>
+
+
+      </nav>
+      <nav class="menu d-flex d-sm-block justify-content-center flex-wrap">
+
+        <i class="fas fa-users fa-2x" aria-hidden="true"></i>
+        <a href="<%= clients_path %>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          Clientes</a>
+
+
+      </nav>
+    </div>
+
+    <main class="main col">
+      <nav class="navbar  navbar-dark">
+        <!-- .container nos permite centrar el contenido de nuestro menu, esta clase es opcional y podemos encerrar el menu <nav> o incluir el contenedor dentro del <nav> -->
+        <div class="container ">
+          <!-- Nos sirve para agregar un logotipo al menu -->
+          <a href="#" class="navbar-brand justify-content-center">COMERCIAL B&G</a>
+        </div>
+      </nav>
+      <div class="row">
+        <div class="columna col-lg-12">
+
+          <div class="widget nueva_entrada">
+            <%= yield %>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+</div>
+</body>
+</html>
