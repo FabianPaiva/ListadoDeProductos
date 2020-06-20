@@ -1,0 +1,39 @@
+<h1>
+  Listing colors
+
+  <%= form_tag colors_path, method: :get, :class => 'float-right form-inline' do %>
+    <%= text_field_tag :term, params[:term], autofocus: true, :class => 'form-control mr-sm-2', :type => 'search', :placeholder => 'Search', autocomplete: 'off' %>
+    <%= submit_tag 'Search', nombre: nil, :class => 'btn btn-outline-success my-2 my-sm-0' %>&nbsp&nbsp&nbsp&nbsp
+    <%= link_to "", color_new_path, class: 'btn btn-primary fas fa-plus rounded-1 float-right form-inline' %>
+  <% end %>
+
+</h1>
+<br>
+<br>
+
+<table class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <th>Colors</th>
+    <th>Options</th>
+  </tr>
+  </thead>
+
+  <% @get_colors_list.each do |c| %>
+    <tbody>
+    <tr>
+      <th><%= c.color_name %></th>
+      <td>
+        &nbsp&nbsp<%= link_to "", color_edit_path(c), class:'btn btn-outline rounded-0 fas fa-pencil-alt fa-2x' %>&nbsp&nbsp
+      </td>
+    </tr>
+    </tbody>
+  <% end %>
+</table>
+
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @get_colors_list %>
+  </div>
+  <%= will_paginate @get_colors_list, :container => false %>
+</div>

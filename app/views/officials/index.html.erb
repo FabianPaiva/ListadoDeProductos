@@ -1,0 +1,43 @@
+<h1>Listado de Productos
+  <%= form_tag officials_path, method: :get, :class => 'float-right form-inline' do %>
+    <%= text_field_tag :term, params[:term], :class => 'form-control mr-sm-2', :type => 'search', :placeholder => 'producto,descripcion..etc.', autocomplete: 'off' %>
+    <%= submit_tag 'Buscar', nombre: nil, :class => 'btn btn-outline-success my-2 my-sm-0' %>&nbsp&nbsp&nbsp&nbsp
+    <%= link_to "", officials_new_path, class: 'btn btn-primary fas fa-plus rounded-1 float-right form-inline', autofocus: true %>
+  <% end %>
+</h1>
+
+<br>
+<br>
+<table class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <th>Producto</th>
+    <th>Proveedor</th>
+    <th>Descripcion</th>
+    <th>Precio Unitario</th>
+    <th>Editar o Ver</th>
+  </tr>
+  </thead>
+
+  <% @officials.each do |official| %>
+    <tbody>
+    <tr>
+      <th>&nbsp&nbsp<%= official.last_name.upcase %>&nbsp&nbsp</th>
+      <td>&nbsp&nbsp<%= official.first_name.upcase%>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= official.address.upcase.first(10) %>&nbsp&nbsp</td>
+      <th>&nbsp&nbsp<%= official.document_number.to_s(:delimited) %>&nbsp&nbsp</th>
+      <td>
+        &nbsp&nbsp<%= link_to "",official_edit_path(official), class:'btn btn-outline rounded-0 fas fa-pencil-alt fa-2x' %>&nbsp&nbsp
+
+      </td>
+    </tr>
+    </tbody>
+  <% end %>
+</table>
+
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @officials %>
+  </div>
+  <%= will_paginate @officials, :container => false %>
+</div>

@@ -1,0 +1,41 @@
+<h1>Listado de servicios
+  <%= form_tag services_path, method: :get, :class => 'float-right form-inline' do %>
+    <%= text_field_tag :term, params[:term], autofocus: true, :class => 'form-control mr-sm-2', :type => 'search', :placeholder => 'nombre de servicio', autocomplete: 'off' %>
+    <%= submit_tag 'Buscar', nombre: nil, :class => 'btn btn-outline-success my-2 my-sm-0' %>&nbsp&nbsp&nbsp&nbsp
+    <%= link_to "", service_new_path, class: 'btn btn-primary fas fa-plus rounded-1 float-right form-inline' %>
+  <% end %>
+</h1>
+
+<br>
+<br>
+<table class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <th>Tipo de servicio</th>
+    <th>Servicio</th>
+    <th>Precio</th>
+    <th>Editar o Ver</th>
+  </tr>
+  </thead>
+
+  <% @services.each do |service| %>
+    <tbody>
+    <tr>
+      <td>&nbsp&nbsp<%= service.service_types_id %>&nbsp&nbsp</td>
+      <th>&nbsp&nbsp<%= service.service_name %>&nbsp&nbsp</th>
+      <td>&nbsp&nbsp<%= service.price %>&nbsp&nbsp</td>
+      <td>
+        &nbsp&nbsp<%= link_to "",service_edit_path(service), class:'btn btn-outline rounded-0 fas fa-pencil-alt fa-2x' %>&nbsp&nbsp
+
+      </td>
+    </tr>
+    </tbody>
+  <% end %>
+</table>
+
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @services %>
+  </div>
+  <%= will_paginate @services, :container => false %>
+</div>

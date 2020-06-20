@@ -1,0 +1,38 @@
+<h1>
+  Listado de tipos de servicios
+
+  <%= form_tag serviceTypes_path, method: :get, :class => 'float-right form-inline' do %>
+    <%= text_field_tag :term, params[:term], autofocus: true, :class => 'form-control mr-sm-2', :type => 'search', :placeholder => 'nombre de servicio', autocomplete: 'off' %>
+    <%= submit_tag 'Buscar', nombre: nil, :class => 'btn btn-outline-success' %>&nbsp&nbsp&nbsp&nbsp
+    <%= link_to "", service_types_new_path, class: 'btn btn-primary rounded-1 fas fa-plus float-right form-inline' %>
+  <% end %>
+
+</h1>
+<br>
+<br>
+
+<table class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <th>Tipo de Servicio</th>
+    <th>Editar o Ver</th>
+  </tr>
+  </thead>
+  <% @get_service_types_list.each do |serviceType| %>
+    <tbody>
+    <tr>
+      <th>&nbsp&nbsp<%= serviceType.service_type_name %>&nbsp&nbsp</th>
+      <td>
+        &nbsp&nbsp<%= link_to "", service_type_edit_path(serviceType), class:'btn btn-outline rounded-0 fas fa-pencil-alt fa-2x' %>&nbsp&nbsp
+      </td>
+    </tr>
+    </tbody>
+  <% end %>
+</table>
+
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @get_service_types_list %>
+  </div>
+  <%= will_paginate @get_service_types_list, :container => false %>
+</div>

@@ -1,0 +1,94 @@
+<h2>
+  <%= title %>
+  <%= link_to "", clients_path, class: 'btn btn-secondary fas fa-undo-alt rounded-1 float-right form-inline' %>
+</h2>
+
+<%= form_for @client do |f| %>
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col">
+        <form action="">
+          <div class="form-group row">
+            <div class="col-12 col-md-6 mb-3">
+              <label><b>Numero de documento o Ruc</b></label>
+              <%= f.number_field :document_number, :type => 'text', :class => 'form-control', :placeholder => 'Ingrese numero de documento', autofocus: true, autocomplete: 'off', :required => 'true' %>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+              <label><b>Numero Celular</b></label>
+              <%= f.number_field :telephone, :type => 'text', :class => 'form-control', :placeholder => 'Ingrese numero de celular', autocomplete: 'off', :required => 'true' %>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+              <label><b>Nombre</b></label>
+              <%= f.text_field :first_name, :type => 'text', :class => 'form-control', :placeholder => 'Ingrese nombre', autocomplete: 'off', :required => 'true' %>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+              <label><b>Direccion</b></label>
+              <%= f.text_field :address, :type => 'text', :class => 'form-control', :placeholder => 'Ingrese direccion de vivienda', autocomplete: 'off', :required => 'true' %>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+              <label><b>Apellido</b></label>
+              <%= f.text_field :last_name, :type => 'text', :class => 'form-control', :placeholder => 'Ingrese apellido', autocomplete: 'off', :required => 'true' %>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+              <label><b>Limite de credito</b></label>
+              <%= f.text_field :limite_credito, :type => 'number', :class => 'form-control', :placeholder => 'Ingrese limite de credito', autocomplete: 'off', :required => 'true' %>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+              <label><b>Tipo de Cliente</b></label>
+              <br>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label-inline">
+                  <%= f.radio_button :customer_type, "contado", checked: true, :class => "form-check form-check-inline", :type => "radio" %>
+                  Contado
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label-inline">
+                  &nbsp;<%= f.radio_button :customer_type, "credito", :class => "form-check  form-check-inline", :type => "radio" %>
+                  Credito
+                </label>
+              </div>
+              <br>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+              <label><b>Fecha de Nacimiento</b></label>
+              <br>
+              <%= f.text_field :birth_date, :id => "datepicker",  autocomplete: 'off', :class => 'form-control', :placeholder => 'Seleccione fecha de nacimiento', :required => 'true' %>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+              <label><b>Genero</b></label>
+              <br>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <%= f.radio_button :gender, "masculino", checked: true, :class => "form-check form-check-inline", :type => "radio" %>
+                  Masculino
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <%= f.radio_button :gender, "femenino", :class => "form-check form-check-inline", :type => "radio" %>
+                  Femenino
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-12 text-center">
+              <div class="row justify-content-center">
+                <div class="col-12 col-sm-9 col-md-4">
+                  <%= f.submit :Crear, :class => 'btn btn-primary btn-block' %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<script>
+    $('#datepicker').datepicker({format: 'yyyy-mm-dd'});
+</script>

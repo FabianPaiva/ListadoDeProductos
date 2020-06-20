@@ -1,0 +1,39 @@
+<h1>
+  Listado de Marcas
+
+  <%= form_tag brands_path, method: :get, :class => 'float-right form-inline' do %>
+    <%= text_field_tag :term, params[:term], autofocus: true, :class => 'form-control mr-sm-2', :type => 'search', :placeholder => 'nombre de marca', autocomplete: 'off' %>
+    <%= submit_tag 'Buscar', nombre: nil, :class => 'btn btn-outline-success my-2 my-sm-0' %>&nbsp&nbsp&nbsp&nbsp
+    <%= link_to "", brands_new_path, class: 'btn btn-primary fas fa-plus rounded-1 float-right form-inline' %>
+  <% end %>
+
+</h1>
+<br>
+<br>
+<table class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <th>Marcas</th>
+    <th>Ver o Editar</th>
+  </tr>
+  </thead>
+
+  <% @get_brands_list.each do |brand| %>
+    <tbody>
+    <tr>
+      <th>&nbsp&nbsp<%= brand.brand_name %>&nbsp&nbsp</th>
+      <td>
+        &nbsp&nbsp<%= link_to "", brand_edit_path(brand), class:'btn btn-outline rounded-0 fas fa-pencil-alt fa-2x' %>&nbsp&nbsp
+
+      </td>
+    </tr>
+    </tbody>
+  <% end %>
+</table>
+
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @get_brands_list %>
+  </div>
+  <%= will_paginate @get_brands_list, :container => false %>
+</div>

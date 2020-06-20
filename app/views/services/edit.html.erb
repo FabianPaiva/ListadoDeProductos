@@ -1,0 +1,41 @@
+<h2>
+  Editar Servicio
+  <%= link_to "", services_path, class: 'btn btn-secondary fas fa-undo-alt rounded-1 float-right form-inline' %>
+</h2>
+
+<%= form_for @service do |f| %>
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col">
+        <form action="">
+          <div class="form-group row">
+            <div class="col-12">
+              <div class="row justify-content-center">
+                <div class="col-12 col-sm-9 col-md-4">
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <label><b>Nombre de Servicio</b></label>
+                  <br>
+                  <%= f.text_field :service_name, :type => 'text', :class => 'form-control', :placeholder => 'Ingrese nombre de servicio', autofocus: true, autocomplete: 'off', :required => 'true' %>
+                  <br>
+                  <label><b>Precio</b></label>
+                  <br>
+                  <%= f.number_field :price, :type => 'text', :class => 'form-control', :placeholder => 'Ingrese precio del servicio', autocomplete: 'off', :required => 'true' %>
+                  <br>
+                  <label><b>Seleccione tipo de servicio</b></label>
+                  <br>
+                  <%= f.collection_select(:service_types_id, ServiceType.all.order(:service_type_name), :id, :service_type_for_select, {:prompt => true}, {:class => 'form-control'}) %>
+                  <br>
+                  <%= f.submit :Actualizar, :class => 'btn btn-primary btn-block' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<% end %>
