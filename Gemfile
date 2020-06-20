@@ -57,7 +57,7 @@ end
 
 group :production do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'pg', '0.15.1'
+  gem 'pg', '~> 0.20.0'
   gem 'rails_12factor', '0.0.2'
 end
 
